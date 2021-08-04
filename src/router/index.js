@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import GetTopGames from '../views/GetTopGames';
 import GetTopStreamers from '../views/GetTopStreamers';
-import StreamersForGame from '../views/StreamersForGame.vue';
+import StreamersForGame from '../views/StreamersForGame';
 import Streamer from '../views/Streamer';
 
 const routes = [

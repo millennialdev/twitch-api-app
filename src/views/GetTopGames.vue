@@ -27,24 +27,35 @@
         </a>
       </div>
     </div>
+
+    <Observer v-on:intersect="intersected"></Observer>
   </div>
 </template>
 
 <script>
 import topNavBarLinks from '../components/topNavBarLinks';
+import Observer from '../components/Observer';
+
 export default {
   name: 'GetTopGames',
   data: function() {
     return {
       listOfTopGames: [],
+      pagination: '',
     };
   },
   components: {
     topNavBarLinks,
+    Observer,
   },
   methods: {
-    fetchTopGames: function() {
-      let fetchLink = 'https://api.twitch.tv/helix/games/top?first=100';
+    fetchTopGames: function(pagination) {
+      let fetchLink = 'https://api.twitch.tv/helix/games/top?first=30';
+
+      if (pagination) {
+        fetchLink =
+          'https://api.twitch.tv/helix/games/top?first=30&after=' + pagination;
+      }
 
       fetch(fetchLink, {
         method: 'get',
@@ -57,7 +68,9 @@ export default {
           return response.json();
         })
         .then((data) => {
-          // console.log(data);
+          console.log(data);
+
+          this.pagination = data.pagination.cursor;
 
           let dataListOfTopGames = [];
 
@@ -85,9 +98,12 @@ export default {
         },
       });
     },
+    intersected: function() {
+      this.fetchTopGames(this.pagination);
+    },
   },
   mounted() {
-    this.fetchTopGames();
+    // this.fetchTopGames();
   },
 };
 </script>

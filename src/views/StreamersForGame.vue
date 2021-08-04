@@ -10,7 +10,7 @@
       >
         <a
           :href="
-            `../streamer/${topStreamerForSpecificGame}?streamerID=${topStreamerForSpecificGame.user_id}`
+            `../streamer/${topStreamerForSpecificGame.user_name}?streamerID=${topStreamerForSpecificGame.user_id}`
           "
           class="topStreamerForSpecificGameLink"
         >
@@ -89,7 +89,7 @@ export default {
     },
   },
   mounted() {
-    this.fetchTopStreamersForSpecificGame();
+    this.fetchTopStreamersForSpecificGame(this.pagination);
   },
 };
 </script>

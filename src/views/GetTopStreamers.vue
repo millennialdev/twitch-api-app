@@ -8,7 +8,11 @@
         v-for="topStreamer in listOfTopStreamers"
         :key="topStreamer.id"
       >
-        <a href="">
+        <a
+          :href="
+            `streamer/${topStreamer.user_name}?streamerID=${topStreamer.user_id}`
+          "
+        >
           <div class="topStreamerLink">
             <div class="topStreamerThumbnailContainer">
               <img
