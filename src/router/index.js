@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import GetTopGames from '../views/GetTopGames';
 import GetTopStreamers from '../views/GetTopStreamers';
+import StreamersForGame from '../views/StreamersForGame.vue';
+import Streamer from '../views/Streamer';
 
 const routes = [
   {
@@ -12,6 +14,16 @@ const routes = [
     path: '/GetTopStreamers',
     name: 'GetTopStreamers',
     component: GetTopStreamers,
+  },
+  {
+    path: '/StreamersForGame/:game_name',
+    name: 'StreamersForGame',
+    component: StreamersForGame,
+  },
+  {
+    path: '/streamer/:streamer_user_name',
+    name: 'Streamer',
+    component: Streamer,
   },
 ];
 

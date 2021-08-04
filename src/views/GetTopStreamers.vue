@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     fetchTopStreamers: function() {
-      let fetchLink = 'https://api.twitch.tv/helix/streams?first=30';
+      let fetchLink = 'https://api.twitch.tv/helix/streams?first=100';
 
       fetch(fetchLink, {
         method: 'get',
@@ -62,7 +62,7 @@ export default {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           let dataListOfTopStreamers = [];
 
           for (var key in data.data) {

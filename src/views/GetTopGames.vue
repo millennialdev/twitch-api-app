@@ -8,7 +8,12 @@
         v-for="topGame in listOfTopGames"
         :key="topGame.gameID"
       >
-        <a href="#">
+        <a
+          href=""
+          v-on:click="
+            goToSpecificGameStreamsPage(topGame.gameID, topGame.gameName)
+          "
+        >
           <div class="topGameThumbnailContainer">
             <img
               class="topGameThumbnail"
@@ -39,7 +44,7 @@ export default {
   },
   methods: {
     fetchTopGames: function() {
-      let fetchLink = 'https://api.twitch.tv/helix/games/top?first=30';
+      let fetchLink = 'https://api.twitch.tv/helix/games/top?first=100';
 
       fetch(fetchLink, {
         method: 'get',
@@ -68,6 +73,17 @@ export default {
 
           this.listOfTopGames = [...this.listOfTopGames, ...dataListOfTopGames];
         });
+    },
+    goToSpecificGameStreamsPage: function(gameID, gameName) {
+      this.$router.push({
+        name: 'StreamersForGame',
+        params: {
+          game_name: gameName,
+        },
+        query: {
+          gameID: gameID,
+        },
+      });
     },
   },
   mounted() {
