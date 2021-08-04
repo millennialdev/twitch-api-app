@@ -36,24 +36,35 @@
         </a>
       </div>
     </div>
+
+    <Observer v-on:intersect="intersected"></Observer>
   </div>
 </template>
 
 <script>
 import topNavBarLinks from '../components/topNavBarLinks';
+import Observer from '../components/Observer';
+
 export default {
   name: 'GetTopStreamers',
   components: {
     topNavBarLinks,
+    Observer,
   },
   data: function() {
     return {
       listOfTopStreamers: [],
+      pagination: '',
     };
   },
   methods: {
-    fetchTopStreamers: function() {
+    fetchTopStreamers: function(pagination) {
       let fetchLink = 'https://api.twitch.tv/helix/streams?first=100';
+
+      if (pagination) {
+        fetchLink =
+          'https://api.twitch.tv/helix/streams?first=100&after=' + pagination;
+      }
 
       fetch(fetchLink, {
         method: 'get',
@@ -67,6 +78,8 @@ export default {
         })
         .then((data) => {
           // console.log(data);
+          this.pagination = data.pagination.cursor;
+
           let dataListOfTopStreamers = [];
 
           for (var key in data.data) {
@@ -89,9 +102,12 @@ export default {
           ];
         });
     },
+    intersected: function() {
+      this.fetchTopStreamers(this.pagination);
+    },
   },
   mounted() {
-    this.fetchTopStreamers();
+    // this.fetchTopStreamers();
   },
 };
 </script>
