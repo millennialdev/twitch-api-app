@@ -4,4 +4,4 @@ Created a Vue.js project using the Twitch API, to show a display of streams by g
 
 <a href='https://twitch-api-app.netlify.app/' target='_blank'>Twitch API App</a>
 
-![Screenshot](.src/assets/screenshots/capture.jpg)
+![Screenshot](.src/assets/capture.jpg)
