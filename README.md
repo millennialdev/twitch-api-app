@@ -1,24 +1,7 @@
-# twitch-api-app
+## Twitch API App
 
-## Project setup
-```
-npm install
-```
+Created a Vue.js project using the Twitch API, to show a display of streams by game / category, and then also by top streamers.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<a href='https://twitch-api-app.netlify.app/' target='_blank'>Twitch API App</a>
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![Screenshot](./assets/screenshots/capture.jpg)
